@@ -1,0 +1,8 @@
+app:
+  debug: true
+  port: 8003
+
+data:
+  allowed_file_types: 
+    - json
+  temp_dir: "./temp"

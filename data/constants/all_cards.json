@@ -1,0 +1,102 @@
+{
+    "Model Name": {
+        "id": "model_name",
+        "title": "Model Name",
+        "content": "example_model"
+    },
+    "Model Version": {
+        "id": "model_version",
+        "title": "Model Version",
+        "content": "1.0.0"
+    },
+    "Model Type": {
+        "id": "model_type",
+        "title": "Model Type",
+        "content": "Classification and Regression (Leak Diagnosis)"
+    },
+    "Number of Epochs": {
+        "id": "number_of_epochs",
+        "title": "Number of Epochs",
+        "content": "50"
+    },
+    "Training Time": {
+        "id": "training_time",
+        "title": "Training Time",
+        "content": "(Pending Calculation)"
+    },
+    "Batch Size": {
+        "id": "batch_size",
+        "title": "Batch Size",
+        "content": "32"
+    },
+    "Framework": {
+        "id": "framework",
+        "title": "Framework",
+        "content": "PyTorch"
+    },
+    "Encoder Layers": {
+        "id": "encoder_layers",
+        "title": "Number of Encoder Layers",
+        "content": "2"
+    },
+    "Hidden Neurons": {
+        "id": "hidden_neurons",
+        "title": "Number of Hidden Neurons",
+        "content": "256"
+    },
+    "Linear Layers": {
+        "id": "linear_layers",
+        "title": "Number of Linear Layers",
+        "content": "3"
+    },
+    "Attention Heads": {
+        "id": "attention_heads",
+        "title": "Number of Attention Heads",
+        "content": "8"
+    },
+    "Final Learning Rate": {
+        "id": "final_learning_rate",
+        "title": "Final Learning Rate",
+        "content": "0.0015"
+    },
+    "Number of Workers": {
+        "id": "number_of_workers",
+        "title": "Number of Workers",
+        "content": "4"
+    },
+    "Shuffle": {
+        "id": "shuffle",
+        "title": "Shuffle",
+        "content": "True"
+    },
+    "Dataset Balance": {
+        "id": "dataset_balance",
+        "title": "Dataset Balance",
+        "content": "True"
+    },
+    "Normalization": {
+        "id": "normalization",
+        "title": "Normalization",
+        "content": "True"
+    },
+    "Input Noise": {
+        "id": "input_noise",
+        "title": "Input Noise",
+        "content": "0.005"
+    },
+    "GPU": {
+        "id": "gpu",
+        "title": "GPU",
+        "content": "NVIDIA GeForce RTX 4060 Laptop GPU (141MB used, 55°C)"
+    },
+    "CPUs": {
+        "id": "cpus",
+        "title": "CPUs",
+        "content": "32 (Usage: 0.1%)"
+    },
+    "RAM": {
+        "id": "ram",
+        "title": "RAM",
+        "content": "12.7GB available of 16.6GB"
+    }
+}

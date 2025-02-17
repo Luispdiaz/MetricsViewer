@@ -1,0 +1,228 @@
+.container-fluid {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x)* .0); 
+    padding-left: calc(var(--bs-gutter-x)* .0); 
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, .P, h1, h2, h3, h4, h5, h6, P {
+    margin-left: 0.65rem;
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+input {
+    margin: 0;
+    margin-right: 5px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.card {
+    /* Sombra en los bordes */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra menos pronunciada */
+    font-size: 18px; /* Tamaño de la fuente */
+    border-left: 5px solid #168cba; /* Borde izquierdo del mismo color que el botón */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo suave */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves para hover */
+}
+
+/* Efecto al pasar el mouse */
+.card:hover {
+    transform: translateY(-2px); /* Eleva la tarjeta ligeramente */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+}
+
+/* Estilos para el título y el texto */
+.card-title {
+    font-size: 22px; /* Tamaño del título aumentado */
+    font-weight: bold; /* Negrita para el título */
+    color: #333; /* Color del texto del título */
+}
+
+.card-text {
+    font-size: 18px; /* Tamaño del texto aumentado */
+    color: #555; /* Color del texto */
+    line-height: 1.5; /* Altura de línea para mejorar la legibilidad */
+}
+
+.btn-primary {
+    background-color: #168cba; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    color: white; /* Color del texto del botón */
+    padding: 12px 24px; /* Espaciado interno (un poco más amplio) */
+    border-radius: 8px; /* Bordes más redondeados */
+    font-size: 16px; /* Tamaño de fuente más grande */
+    font-weight: 600; /* Peso de la fuente más fuerte */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves para hover */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para el botón */
+}
+
+/* Efecto al pasar el mouse */
+.btn-primary:hover {
+    background-color: #137a9c; /* Color del botón al pasar el mouse */
+    transform: translateY(-2px); /* Eleva el botón ligeramente */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa al pasar el mouse */
+}
+
+.btn-primary:focus {
+    outline: none; /* Sin contorno al hacer clic */
+    box-shadow: 0 0 5px rgba(23, 140, 186, 0.5); /* Sombra de enfoque para accesibilidad */
+}
+
+/* Estilo para la tabla de métricas */
+.table {
+    width: 100%; /* Ancho completo de la tabla */
+    border-collapse: collapse; /* Colapsa los bordes para un diseño más limpio */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad a la tabla */
+    text-align: center; /* Centrar texto en toda la tabla */
+}
+
+.table thead th {
+    padding: 15px;
+    border: 1px solid black;
+    font-size: 1.3rem;
+    background-color: #168bba;
+}
+
+/* Estilo para las celdas del encabezado */
+.table thead th {
+    padding: 15px; /* Espaciado interno en el encabezado */
+    border: 1px solid black; /* Borde negro */
+    font-size: 1.3rem; /* Aumentar tamaño de letra */
+}
+
+/* Estilo para las filas de la tabla */
+.table tbody tr {
+    transition: background-color 0.3s; /* Transición suave para el fondo */
+    
+}
+
+/* Estilo para las celdas de las filas */
+.table tbody td {
+    padding: 15px; /* Espaciado interno en las celdas */
+    border: 1px solid black; /* Borde negro */
+    font-size: 1.2rem; /* Tamaño de letra para las celdas */
+}
+
+/* Efecto hover en las filas */
+.table tbody tr:hover {
+    background-color: #f1f1f1; /* Color de fondo gris claro al pasar el ratón */
+}
+
+/* Estilo para celdas de la tabla que tienen valores numéricos */
+.table tbody td:nth-child(n+2) {
+    text-align: center; /* Centrar texto en las celdas numéricas */
+}
+
+/* Estilo para el contenedor principal del select */
+.Select {
+    width: 100%;
+    max-width: 400px; /* Ajusta el ancho máximo */
+    position: relative;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo para el control del select */
+.Select-control {
+    border: 2px solid  #858787;  /* Borde azul */
+    border-radius: 8px;  /* Bordes redondeados */
+    background-color: white;  /* Fondo blanco */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover en el control */
+.Select-control:hover {
+    border-color: #168bba;  /* Borde más oscuro en hover */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);  /* Sombra */
+}
+
+/* Estilo para el valor seleccionado */
+.Select-value {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: #333;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Estilo para la etiqueta de valor seleccionado */
+.Select-value-label {
+    font-weight: bold;
+}
+
+/* Flecha para el dropdown */
+.Select-control::after {
+    content: '▼';  /* Flecha hacia abajo */
+    margin-left: auto;
+    color: #858787;  /* Color gris cuando no hay selección */
+    font-size: 12px;
+    pointer-events: none;  /* No permite interacción con la flecha */
+}
+
+/* Cambiar color de la flecha cuando hay una selección */
+.Select-control.has-value::after {
+    color: #168bba;  /* Cambia a azul si hay selección */
+}
+
+/* Opciones del menú dropdown */
+.Select-menu-outer {
+    position: absolute;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0 0 8px 8px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de cada opción en el menú */
+.Select-option {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover sobre las opciones */
+.Select-option:hover {
+    background-color: #f1f1f1;  /* Color de fondo al pasar el cursor */
+}
+
+/* Opción seleccionada */
+.Select-option.is-selected {
+    background-color: #168bba;
+    color: white;
+}
+
+/* Si el dropdown está deshabilitado */
+.Select.is-disabled .Select-control {
+    background-color: #e9ecef;  /* Fondo gris */
+    cursor: not-allowed;
+    border-color: #ccc;
+}
+
+/* Ajuste para que las opciones no se solapen */
+.dash-dropdown {
+    position: relative;
+}
+
+.Select-arrow {
+    display: none; /* Esto desactiva la visualización del triángulo */
+}
