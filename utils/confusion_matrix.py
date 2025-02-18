@@ -284,6 +284,7 @@ class ConfusionMatrix:
         dict
             A dictionary where keys are class labels and values are fallout scores for each class.
         """
+        
         fp = np.sum(self.matrix, axis=0) - np.diag(self.matrix)
         tn = np.sum(self.matrix) - (np.sum(self.matrix, axis=0) + np.sum(self.matrix, axis=1) - np.diag(self.matrix))
         fallout_scores = np.divide(fp, fp + tn, out=np.zeros_like(fp, dtype=float), where=(fp + tn) != 0)

@@ -27,7 +27,7 @@ def compute_metric_evolution_classification(history: dict, metric: str, class_la
         elif metric_lower == 'recall':
             rec = cm.recall()
             value = np.mean(list(rec.values()))
-        elif metric_lower == 'f1 score':
+        elif metric_lower == 'f1_score':
             f1 = cm.f1_score() 
             value = np.mean(list(f1.values()))
         elif metric_lower == 'specificity':

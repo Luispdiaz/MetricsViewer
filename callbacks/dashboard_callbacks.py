@@ -365,7 +365,10 @@ def register_dashboard_callbacks(app):
             return go.Figure(), go.Figure()
 
         outputs = file_info_store.get("outputs", [])
-        selected_output_info = next((output for output in outputs if selected_output.lower() in output.get("custom_name", "").lower()), None)
+        selected_output_info = next(
+            (output for output in outputs if selected_output.lower() in output.get("custom_name", "").lower()),
+            None
+        )
         train_file_path = pet_train_store.get(selected_output, '')
         valid_file_path = pet_valid_store.get(selected_output, '')
         train_json = load_json_from_file(train_file_path)
@@ -376,42 +379,47 @@ def register_dashboard_callbacks(app):
 
         problem_type = str(selected_output_info.get("optimized_via.value", "")).upper()
 
+        # CLASIFICACIÓN - Confusion Matrix using percentiles
         if problem_type == ProblemType.CLASSIFICATION.value:
             history_train = train_json.get("history", {})
             history_valid = valid_json.get("history", {})
 
-            def compute_averaged_matrices(history):
-                num_epochs = len(history)
-                num_splits = 5
-                segment_size = num_epochs // num_splits
+            def compute_percentile_matrices(history):
+                # Ordenar los epochs de forma numérica
+                epoch_keys = sorted(history.keys(), key=int)
+                # Obtener la lista de matrices en orden
+                matrices = [np.array(history[ep]) for ep in epoch_keys]
+                matrices_stack = np.array(matrices)  # Shape: (num_epochs, rows, cols)
+                # Definir los percentiles deseados: 20, 40, 60, 80 y 100
+                percentiles = [20, 40, 60, 80, 100]
+                # Calcular los percentiles a lo largo del eje 0 (entre epochs)
+                percentile_matrices = np.percentile(matrices_stack, q=percentiles, axis=0)
+                # Crear un diccionario con 5 claves (1 a 5)
+                result = {}
+                for i in range(5):
+                    result[i + 1] = percentile_matrices[i]
+                return result
 
-                averaged_matrices_dict = {}
+            percentile_matrices_train = compute_percentile_matrices(history_train)
+            percentile_matrices_valid = compute_percentile_matrices(history_valid)
+                    
+            # Utilizar los nombres de clase reales si existen
+            class_labels = selected_output_info.get("class_names", [])
+            if not class_labels:
+                class_labels = [f'Class {i+1}' for i in range(percentile_matrices_train[1].shape[0])]
+            classes = class_labels
 
-                for i in range(num_splits):
-                    start = i * segment_size
-                    end = (i + 1) * segment_size if i < num_splits - 1 else num_epochs
+            # Seleccionar el conjunto de matrices según split
+            percentile_matrices = percentile_matrices_train if split_type == 'train' else percentile_matrices_valid
 
-                    matrices_in_segment = [np.array(history[str(epoch)]) for epoch in range(start, end) if str(epoch) in history]
-
-                    if matrices_in_segment:
-                        averaged_matrix = np.mean(matrices_in_segment, axis=0)
-
-                        original_shape = matrices_in_segment[0].shape
-                        averaged_matrix = np.reshape(averaged_matrix, original_shape)
-
-                        averaged_matrices_dict[i + 1] = averaged_matrix
-
-                return averaged_matrices_dict
-
-            averaged_matrices_train = compute_averaged_matrices(history_train)
-            averaged_matrices_valid = compute_averaged_matrices(history_valid)
+            # Calcular las etiquetas de epoch basadas en percentiles
+            history_used = history_train if split_type == 'train' else history_valid
+            epoch_keys_sorted = sorted(history_used.keys(), key=int)
+            M = len(epoch_keys_sorted)
+            percentiles = [20, 40, 60, 80, 100]
+            epoch_labels = [epoch_keys_sorted[int(round((q/100)*(M-1)))] for q in percentiles]
             
-            classes = [f'Class {i+1}' for i in range(averaged_matrices_train[1].shape[0])]
-
-            averaged_matrices = averaged_matrices_train if split_type == 'train' else averaged_matrices_valid
-
-            fig = create_flat_3d_heatmap(split_type, classes, averaged_matrices)
-
+            fig = create_flat_3d_heatmap(split_type, classes, percentile_matrices, epoch_labels)
             return go.Figure(), fig
 
         elif problem_type == ProblemType.REGRESSION.value:  
@@ -423,3 +431,4 @@ def register_dashboard_callbacks(app):
             return go.Figure(), residuals_fig
 
         return go.Figure(), go.Figure()
+
