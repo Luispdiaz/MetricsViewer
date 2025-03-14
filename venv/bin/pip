@@ -1,4 +1,4 @@
-#!/home/luisp/repositorios/idetectfugas-ml/venv/bin/python
+#!/home/luisp/repositorios/MetricsViewer/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

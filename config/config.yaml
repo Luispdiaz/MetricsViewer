@@ -1,6 +1,6 @@
 app:
   debug: true
-  port: 8003
+  port: 3000
 
 data:
   allowed_file_types: 

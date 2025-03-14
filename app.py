@@ -45,5 +45,6 @@ register_load_callbacks(app)
 register_dashboard_callbacks(app)
 
 if __name__ == "__main__":
-    app.run_server(debug=config['app']['debug'], port=config['app']['port'])
+    app.run_server(debug=config['app']['debug'], host="0.0.0.0", port=config['app']['port'])
+
 
